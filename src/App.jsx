@@ -7,19 +7,22 @@ import AboutUs from './AboutUs';
 function App() {
   
   const [showProductList, setShowProductList] = useState(false);
+  const [showCart, setShowCart] = useState(false);
+
 
   const handleGetStartedClick = () => {
     setShowProductList(true);
+    setShowCart(false);
   };
 
   const handleHomeClick = () => {
     setShowProductList(false);
   };
 
-  const handleContinueShopping = () => {
-  setShowProductList(true);
+  const handleContinueShopping = (e) => {
+    e.preventDefault();
+    setShowProductList(true); 
   };
-
 
   return (
     <div className="app-container">
@@ -42,7 +45,13 @@ function App() {
 
       </div>
       <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
-        <ProductList onHomeClick={handleHomeClick} onContinueShopping={handleContinueShopping} />
+        <ProductList
+            onHomeClick={handleHomeClick}
+            onContinueShopping={handleContinueShopping}
+            showCart={showCart}
+            setShowCart={setShowCart}
+        />
+
       </div>
     </div>
   );

@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import './ProductList.css'
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
-function ProductList({ onHomeClick, onContinueShopping }) {
-    const [showCart, setShowCart] = useState(false);
+function ProductList({ onHomeClick, onContinueShopping, showCart, setShowCart }) {
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
     const dispatch = useDispatch ();
@@ -251,19 +250,21 @@ function ProductList({ onHomeClick, onContinueShopping }) {
 
     const handleCartClick = (e) => {
         e.preventDefault();
-        setShowCart(true); // Set showCart to true when cart icon is clicked
-    };
+        setShowCart(true);
+      };
+      
     const handlePlantsClick = (e) => {
         e.preventDefault();
-        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-        setShowCart(false); // Hide the cart when navigating to About Us
+        setShowPlants(true); 
+        setShowCart(false); 
     };
 
     const handleContinueShopping = (e) => {
         e.preventDefault();
         setShowCart(false);
-        onContinueShopping();
-    };
+        onContinueShopping(e); 
+      };
+      
     return (
         <div>
             <div className="navbar" style={styleObj}>
