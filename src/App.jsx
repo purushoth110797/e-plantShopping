@@ -16,6 +16,11 @@ function App() {
     setShowProductList(false);
   };
 
+  const handleContinueShopping = () => {
+  setShowProductList(true);
+  };
+
+
   return (
     <div className="app-container">
       <div className={`landing-page ${showProductList ? 'fade-out' : ''}`}>
@@ -37,7 +42,7 @@ function App() {
 
       </div>
       <div className={`product-list-container ${showProductList ? 'visible' : ''}`}>
-        <ProductList onHomeClick={handleHomeClick}/>
+        <ProductList onHomeClick={handleHomeClick} onContinueShopping={handleContinueShopping} />
       </div>
     </div>
   );
